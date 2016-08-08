@@ -1,0 +1,122 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\setlength{\oddsidemargin}{12pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\pagestyle{empty}
+\setlength{\parskip}{7pt plus 2pt minus 2pt}
+
+\begin{document}
+
+\begin{center}
+{{\large CS 330 : Discrete Computational Structures}}\\
+
+%\vspace*{1cm}
+
+{\bf Fall Semester, 2015}\\
+
+{\sc Assignment \#8}\\
+{\bf Due Date:}  Tuesday, Nov 3\\
+Cahlen Brancheau
+\end{center}
+
+\noindent {\bf Suggested Reading:} Rosen 9.1 and 9.5, LLM 9.4
+
+These are the problems that you need to turn in. For more
+practice, you are encouraged to work on the other problems. {\bf Always
+explain your answers and show your reasoning.}
+
+%\vspace*{0.5cm}
+
+\begin{enumerate}
+
+\item {\bf [18 Pts]} For each of these relations decide whether it is reflexive, anti-reflexive, symmetric, anti-symmetric and transitive. Justify your answers. $R_1$ and $R_2$ are over the set of real numbers and $R_3$ is over the set of all people.
+
+\begin{enumerate}
+
+\item $(x,y) \in R_1$ if and only if $xy = 4$\\
+\textbf{Reflexive}: No. $(1,1) \notin R_1$\\
+\textbf{Anti-Reflexive}: No. $(2,2) \in R_1$\\
+\textbf{Symmetric}: Yes. $xy = 4 \leftrightarrow xy = 4$ therefore $(x,y) \in R_1 \rightarrow (y,x) \in R_1$\\
+\textbf{Anti-Symmetric}: No. Because Symmetry\\
+\textbf{Transitive}: No. $(1,4) \in R_1$ and $(4,1) \in R_1$ but $(1,1) \notin R_1$\\
+
+
+\item $(x,y) \in R_2$ if and only if $x = 1$ or $y = 1$\\
+\textbf{Reflexive}: No. $(5,5) \notin R_2$\\
+\textbf{Anti-Reflexive}: No. $(1,1) \in R_2$\\
+\textbf{Symmetric}: Yes. $(x,y) \in R_2 \rightarrow (y,x) \in R_2$\\
+\textbf{Anti-Symmetric}: No. $(2,1) \in R_2$ and $(1,2) \in R_2$\\
+\textbf{Transitive}: No. $(2,1) \in R_2$ and $(1,2) \in R_2$ but $(2,2) \notin R_2$\\
+
+
+\item $(x,y) \in R_3$ if and only if $x$ and $y$ share a common biological parent\\
+\textbf{Reflexive}: Yes. Trivially true. $(x,x) \in R_3$\\
+\textbf{Anti-Reflexive}: No. $(x,x) \in R_3$\\
+\textbf{Symmetric}: Yes. $(x,y) \in R_3 \rightarrow (y,x) \in R_3$\\
+\textbf{Anti-Symmetric}: No. Because symmetry\\
+\textbf{Transitive}: No. Bob and Linda have baby $a$. Linda and Steve have baby $b$. Steve and Beth have baby $c$. $(a,b) \in R_3$ and $(b,c) \in R_3$ but $(a,c) \notin R_3$
+
+
+\end{enumerate}
+
+\clearpage
+
+\item {\bf [12 Pts]} Consider relation $R_4$ on the set of positive real numbers where 
+$(x,y) \in R_4$ if and only if $x/y \in \cal Q$. Decide whether it is (a) reflexive, anti-reflexive, symmetric, anti-symmetric and transitive and (b) show that this an equivalence relation. Describe the equivalence classes. (c) What is the equivalence class of $2$? of $\pi$? Justify your answers.\\\\
+(a) 
+\textbf{Reflexive}: Yes. $\frac{a}{a} = 1$ and $1 \in \mathbb{Q}$ therefore $(a,a) \in R_4$\\
+\textbf{Anti-Reflexive}: No. Because reflexivity\\
+\textbf{Symmetric}: Yes. $\forall x,y \in \mathbb{R^+}, \frac{x}{y} \in \mathbb{Q} \rightarrow \frac{y}{x} \in \mathbb{Q}$ therefore $(x,y) \in R_4$ and $(y,x) \in R_4$\\
+\textbf{Anti-Symmetric}: No. Because Symmetry\\
+\textbf{Transitive}: Yes. $(x,y) \in R_4 \rightarrow (y,x) \in R_4$ and $(x,x) \in R_4$\\
+
+(b) 
+An equivalence relation is defined as a relation that is \textbf{Reflexive}, \textbf{Symmetric}, and \textbf{Transitive}. $R_4$ is all three. $R_4$ is an equivalence relation.\\
+
+(c) 
+$[2]_R = \{ \forall n \in \mathbb{R+} | \frac{2}{n} or \frac{n}{2}\}$, $[\pi]_R = \{ \forall n \in \mathbb{R+} | \frac{\pi}{n} or \frac{n}{\pi}\}$\\
+
+\item {\bf [12 Pts]} Let $R_5$ be the relation on $\mathbb{Z} \times \mathbb{Z}$ where 
+$((a,b), (c,d)) \in R_5$ if and only if $a-c = b-d$. \\
+
+\begin{enumerate}
+
+\item Prove that $R_5$ is an equivalence relation. \\
+
+\textbf{Reflexive}: Yes. $a - a = b - b \rightarrow ((a,b)(a,b)) \in R_5$\\
+\textbf{Symmetric}: Yes. $a - c = b - d \leftrightarrow c - a = d - b$ therefore $((a,b)(c,d)) \in R_5$ and $((c,d)(a,b)) \in R_5$\\
+\textbf{Transitive}: Yes. $((a,b)(c,d)) \in R_5$ and $((c,d)(e,f)) \in R_5$ gives us $a - c = b - d$ and $c - e = d - f$. $(a-c) - (c - f) = (b - d) - (d - f)$ which implies that $a-e = b - f$ therefore $((a,b)(e,f)) \in R_5$\\
+
+\item Define a function $f$ such that $f(a,b) = f(c,d)$ if and only if $((a,b), (c,d)) \in R$.\\
+
+$f(x,y) = x - y$\\
+
+\item Define the equivalence class containing $(1,1)$ and list 2 elements in the class.\\
+
+$[(1,1)] = \{ (x,x) | x \in  \mathbb{Z}\}$\\
+
+Elements: $(2,2)$, $(3,3)$\\
+
+\item Describe each equivalence class. How many classes are there and how many elements in each class?\\
+
+There are a countably infinite number of classes each with a countably infinite number of elements.
+
+\end{enumerate}
+
+\clearpage
+
+\item {\bf [4 Pts]} Describe all the equivalence classes for the relation {\it congruence modulo 6} over $\cal Z$, using set-builder notation.\\
+$[0] = \{ 6n | n \in \mathbb{Z} \}$\\
+$[1] = \{ 6n + 1 | n \in \mathbb{Z} \}$\\
+$[2] = \{ 6n + 2 | n \in \mathbb{Z} \}$\\
+$[3] = \{ 6n + 3 | n \in \mathbb{Z} \}$\\
+$[4] = \{ 6n + 4 | n \in \mathbb{Z} \}$\\
+$[5] = \{ 6n + 5 | n \in \mathbb{Z} \}$\\
+
+\item {\bf [4 Pts]} LLM Problem 9.9 (c)\\
+$8.01 \rightarrow 8.02 \rightarrow 18.01 \rightarrow 18.02 \rightarrow 6.042 \rightarrow 6.046 \rightarrow 6.840 \rightarrow 18.03 \rightarrow 6.002 \rightarrow 6.001 \rightarrow 6.034 \rightarrow 6.003 \rightarrow 6.004 \rightarrow 6.033 \rightarrow 6.857$\\
+
+\end{enumerate}
+\end{document}
+

@@ -1,0 +1,141 @@
+\documentstyle[11pt]{article}
+\setlength{\oddsidemargin}{12pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\pagestyle{empty}
+\setlength{\parskip}{7pt plus 2pt minus 2pt}
+
+\begin{document}
+
+\begin{center}
+{{\large CS 330 : Discrete Computational Structures}}\\
+
+%\vspace*{1cm}
+
+{\bf Fall Semester, 2015}\\
+
+{\sc Assignment \#6}\\
+{\bf Due Date:}  Sunday, Oct 18
+\end{center}
+
+\noindent {\bf Suggested Reading:} Rosen Section 5.2 - 5.3; Lehman et al. Chapter 5
+
+These are the problems that you need to turn in. For more
+practice, you are encouraged to work on the other problems. {\bf Always
+explain your answers and show your reasoning.}
+
+\begin{enumerate}
+
+\item {\bf [10 Pts]} Rosen, Section 5.3: Exercise 8 (a), (d)\\
+Anwser 8a:\\
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rcll}
+$a_n$                   & $=$ & $4n-2$        & for $n$ in the set of positive integers \\
+                        &     &               &                                         \\
+$a_{n-1}$               & $=$ & $4(n-1)-2$    &                                         \\
+                        & $=$ & $4n-6$        &                                         \\
+                        &     &               &                                         \\
+$a_1$                   & $=$ & $4*1-2$       &                                         \\
+                        & $=$ & $2$           &                                         \\
+                        &     &               &                                         \\
+$a_n - a_{n-1}$         & $=$ & $4$           &                                         \\
+                        &     &               &                                         \\
+Recursive Def of $a_n$: &     &               &                                         \\
+$a_1$                   & $=$ & $2$           &                                         \\
+$a_n$                   & $=$ & $a_{n-1} + 4$ & for $n \geq 2$                         
+\end{tabular}
+\end{table}
+Anwser 8d:\\
+\begin{table}[h]
+\centering
+\begin{tabular}{rcll}
+$a_n$                   & $=$ & $n^2$            & for $n$ in the set of positive integers \\
+                        &     &                  &                                         \\
+$a_{n-1}$               & $=$ & $(n-1)^2$        &                                         \\
+                        & $=$ & $n^2 - 2n + 1$   &                                         \\
+                        &     &                  &                                         \\
+$a_1$                   & $=$ & $1^2$            &                                         \\
+                        & $=$ & $1$              &                                         \\
+                        &     &                  &                                         \\
+$a_n - a_{n-1}$         & $=$ & $2n-1$           &                                         \\
+                        &     &                  &                                         \\
+Recursive Def of $a_n$: &     &                  &                                         \\
+$a_1$                   & $=$ & $1$              &                                         \\
+$a_n$                   & $=$ & $a_{n-1} + 2n-1$ & for $n \geq 1$                         
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\item {\bf [8 Pts]} Rosen, Section 5.3: Exercise 16\\
+Answer:
+
+The proof would be something like this, but I don't understand how the series in the question works, so I don't know how to attack it.\\
+
+Basis: $P(1): 1^3 =  1$ and $(1(\frac{1+1}{2}))^2 = (1 * 1)^2 = 1$
+
+Inductive Step:\\
+Assume $P(k)$ where $P(k) = 1^3 + 2^3 + \cdots + k^3 = k(\frac{k+1}{2})^2$\\
+Prove: $P(k) \rightarrow P(k+1)$\\
+$P(k+1): 1^3 + 2^3 + \cdots + k^3 + (k+1)^3 = (k+1)(\frac{k+2}{2})$\\
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rcl}
+$1^3 + 2^3 + \cdots + k^3 + (k+1)^3$ & $=$ & $k(\frac{k+1}{2})^2 + (k+1)^3$ \\
+                                     & $=$ & $k(\frac{k+1}{2})^2$           \\
+                                     & $=$ & $(k+1)^2 (\frac{k^2}{4} +k +1)$  \\
+                                     & $=$ & $(k+1)^2 \frac{(k^2 +4k +4)}{4}$ \\
+                                     & $=$ & $(k+1)(\frac{k+2}{2})$          
+\end{tabular}
+\end{table}
+
+\item {\bf [12 Pts]} Consider the following state machine. The machine has four states, labeled 0, 1, 2, and 3. The start state is 0.
+The transitions are $0 \rightarrow 1$, $1 \rightarrow 2$, $2 \rightarrow 3$,
+and $3 \rightarrow 0$.
+
+Prove that if we take $n$ steps in the state machine we will end up in state 0 if and only if $n$ is divisible by 4. Argue why we cannot prove the statement above by induction. Instead, we need to {\it strengthen the induction hypothesis}. State the strengthened hypothesis and prove it.\\
+
+Answer:
+
+Strengthened Hyp:  $P(n)$: If we take $n$ steps in the state machine we will end up in state $s$ if and only if $n\%4 = s$.\\
+
+Basis: $P(0): 0\%4 = 0$, basis holds.\\
+Inductive Step:\\
+Assume $P(k)$ where $P(k) = n\%4 = s$\\
+Prove: $P(k) \rightarrow P(k+1)$\\\\
+Consider four cases:\\
+Case 1: $k\%4 = 0$, after k steps we are in state $0$ because $\frac{k}{4}$ has a remainder of $0$. Since $\frac{k}{4}$ has a remainder of $0$ then $\frac{k+1}{4}$ will have a remainder of $1$, placing the state machine in state $1$.\\
+Case 2: $k\%4 = 1$, after k steps we are in state $1$ because $\frac{k}{4}$ has a remainder of $1$. Since $\frac{k}{4}$ has a remainder of $1$ then $\frac{k+1}{4}$ will have a remainder of $2$, placing the state machine in state $2$.\\
+Case 3: $k\%4 = 2$, after k steps we are in state $2$ because $\frac{k}{4}$ has a remainder of $2$. Since $\frac{k}{4}$ has a remainder of $2$ then $\frac{k+1}{4}$ will have a remainder of $3$, placing the state machine in state $3$.\\
+Case 4: $k\%4 = 3$, after k steps we are in state $3$ because $\frac{k}{4}$ has a remainder of $3$. Since $\frac{k}{4}$ has a remainder of $3$ then $\frac{k+1}{4}$ will again be divisible by $4$ and thus have a remainder of $0$, placing the state machine in state $0$.\\
+
+\clearpage
+
+\item {\bf [8 Pts]} Lehman et al. Problem 5.10\\
+Answer:
+
+$P(n)$: after $n$ squares have been places the periphery length will be even.
+
+Basis: $P(1):$ on square has $4$ sides and $4$ is even. $P(1)$ holds.\\
+
+Inductive Step:\\
+Assume $P(k)$: after $k$ squares have been places the periphery length will be even.\\
+Prove: $P(k) \rightarrow P(k+1)$\\\\
+Consider four cases:\\
+Case 1: $k+1th$ square shares $1$ edge with existing periphery, the periphery loses $1$ edge, but gains $3$. This results in an overall increase of $2$ and therefore the length remains even.\\
+Case 2: $k+1th$ square shares $2$ edges with existing periphery, the periphery loses $2$ edges, but gains $2$. This results in an overall increase of $0$ and therefore the length remains even.\\
+Case 3: $k+1th$ square shares $3$ edges with existing periphery, the periphery loses $3$ edges, but gains $1$. This results in an overall decrease of $2$ and therefore the length remains even.\\
+Case 4: $k+1th$ square shares $4$ edges with existing periphery, the periphery loses $4$ edges, and gains $0$. This results in an overall decrease of $4$ and therefore the length remains even.\\
+
+\item {\bf [12 Pts]} A robot wanders around a 2-dimensional grid. He starts out at (0,0) and can take the following steps: (+2,-1), (-1,-1) and (0,3).
+Define a state machine for this problem. Then, define a Preserved Invariant and prove that the robot will never get to (2,0).\\
+
+Answer:\\
+
+To prove this I'd need to find an invariant that is true for all possible moves, but not true for position $(2,0)$. Obviously one exists, but I cannot figure out what it is.
+
+\end{enumerate}
+\end{document}

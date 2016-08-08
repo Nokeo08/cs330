@@ -1,0 +1,166 @@
+\documentstyle[12pt]{article}
+\setlength{\oddsidemargin}{12pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\pagestyle{empty}
+\setlength{\parskip}{7pt plus 2pt minus 2pt}
+
+\begin{document}
+
+\begin{center}
+{{\large CS 330 : Discrete Computational Structures}}\\
+Cahlen Brancheau Homework 2
+
+\vspace*{1cm}
+
+{\bf Fall Semester, 2015}\\
+
+{\sc Assignment \#2}\\
+{\bf Due Date:}  Friday, Sept 11
+\end{center}
+
+{\bf Suggested Reading:} Rosen Sections 1.4 - 1.6; Lehman et al. Chapter 3
+
+These are the problems that you need to turn in. For more
+practice, you are encouraged to work on the other problems. Always
+explain your answers and show your reasoning.
+
+\begin{enumerate}
+
+\item {\bf [9 Pts]} Let $C(x)$ be the statement that $x$ has a cat, let $D(x)$ be the statement that $x$ has a dog, and let $P(x)$ be the statement that $x$ has a parrot. Let the universe be all the students in class. 
+Express each of these statements in terms of $C(x)$, $D(x)$ and $P(x)$.
+
+\begin{enumerate}
+
+\item Every student has a cat and either a dog or a parrot.\\
+Answer: $\forall x (C(x) \wedge ( D(x) \vee P(x) ))$
+
+\item There is exactly one student who has both a dog and a parrot.\\
+Answer: $\exists x ( (D(x) \wedge P(x)) \wedge \forall z ( (z \neq x) \rightarrow \neg ( D(z) \wedge P(z) ) ) )$
+
+\item There are at least two students who have all three pets.\\
+Answer: $\exists x \exists y ( ( x \neq y ) \wedge (D(x) \wedge P(x) \wedge C(x)) \wedge  (D(y) \wedge P(y) \wedge C(y)) )$
+
+\end{enumerate}
+\clearpage
+\item {\bf [5 Pts]} Are $\forall x (P(x) \leftrightarrow Q(x))$ and $\forall x P(x) \leftrightarrow \forall x Q(x)$ logically equivalent? 
+         If yes, give a proof. If no, give a counterexample.
+         
+         \begin{table}[h]
+		\centering
+		\begin{tabular}{cc}
+		$Q(1) = T$ & $Q(2) = F$ \\
+		$P(1) = T$ & $P(2) = F$ 
+		\end{tabular}
+	\end{table}
+	
+	In $U = \{1,2\}$ with predicates defined above $\forall x (P(x) \leftrightarrow Q(x))$ is a Tautology, but $\forall x P(x) \leftrightarrow \forall x Q(x)$ can be false. Specifically in the cases $\forall x P(1) \leftrightarrow \forall x Q(2)$ or $\forall x P(2) \leftrightarrow \forall x Q(1)$.
+
+\clearpage
+
+\item {\bf [15 Pts]} Some players are placed on two teams $A$ and $B$. Let all the players be your universe. Define predicates $P$, $Q$ and $R$ to represent the sentences in parts (a), (b) and (c). You can use the given predicates or any predicate you have already defined. You can use the predicate $P$ to derive predicates $Q$ and $R$, for example.
+
+Let $A(x)$ be the predicate that player $x$ is placed on team $A$. Let $B(x)$ be the predicate that player $x$ is placed on team $B$. $E(x,y)$ says that $x$ was selected before $y$.
+
+\begin{enumerate} 
+
+\item Student $x$ was the first player chosen to Team $A$.\\
+Answer: $\exists x ( A(x) \wedge \forall z ( (( x \neq z ) \wedge A(z) ) \rightarrow E(x,z) )$
+
+\item Student $x$ was the last player to be picked to either team.\\
+Answer: $\exists x ( ( A(x) \vee B(x) ) \wedge \forall z ( ( x \neq z ) \rightarrow E(z,x) )$
+
+\item Student $x$ was the second player chosen to Team $A$.\\
+Answer: $\exists x \exists y( ((x \neq y) \wedge A(x) \wedge A(y) \wedge E(y,x) ) \wedge \forall z ( ( (z \neq x) \wedge ( z \neq y) \wedge A(z) ) \rightarrow E(x,z) ))$
+
+\end{enumerate}
+\clearpage
+\item {\bf [15 Pts]} Prove the following by defining predicates and using the appropriate rules of inference:
+
+\begin{enumerate}
+
+\item Jane, a student in class, knows JAVA. Everyone who knows JAVA will get a summer internship.
+         Therefore, someone in class will get a summer internship.\\
+         Answer: 
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+$J(x)$: x knows Java                                                     &                        & Step                                                       & Reason                                              \\ \cline{2-4} 
+\multicolumn{1}{l|}{$C(x)$: x is in this class}                          & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{$\forall x ( J(x) \rightarrow S(x) )$} & \multicolumn{1}{c|}{Hypothesis 1}                   \\ \cline{2-4} 
+\multicolumn{1}{l|}{$S(x)$: x has a summer internship}                   & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{$C(Jane) \wedge J(Jane)$}              & \multicolumn{1}{c|}{Hypothesis 2}                   \\ \cline{2-4} 
+\multicolumn{1}{l|}{Hypothesis 1: $\forall x ( J(x) \rightarrow S(x) )$} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{$C(Jane)$}                             & \multicolumn{1}{c|}{Simplification (2)}             \\ \cline{2-4} 
+\multicolumn{1}{l|}{Hypothesis 2: $C(Jane) \wedge J(Jane)$}              & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{$J(Jane)$}                             & \multicolumn{1}{c|}{Simplification (2)}             \\ \cline{2-4} 
+\multicolumn{1}{l|}{Conclusion: $\exists x ( C(x) \wedge S(x) )$}        & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{$J(Jane) \rightarrow S(Jane)$}         & \multicolumn{1}{c|}{Universal Instantiation (1)}    \\ \cline{2-4} 
+\multicolumn{1}{l|}{}                                                    & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{$S(Jane)$}                             & \multicolumn{1}{c|}{Modus Ponens (4), (5)}          \\ \cline{2-4} 
+\multicolumn{1}{l|}{}                                                    & \multicolumn{1}{c|}{7} & \multicolumn{1}{c|}{$C(Jane) \wedge S(Jane)$}              & \multicolumn{1}{c|}{Conjunction (3), (6)}           \\ \cline{2-4} 
+\multicolumn{1}{l|}{}                                                    & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{$\exists x ( C(x) \wedge S(x) )$}      & \multicolumn{1}{c|}{Existential Generalization (7)} \\ \cline{2-4} 
+\end{tabular}
+\end{table}
+
+\item Steven Spielberg made a movie about Lincoln.  All movies by Steven Spielberg win awards. 
+         Therefore, there is a movie about Lincoln that wins awards.\\
+         Answer: 
+\begin{table}[h]
+\centering
+\begin{tabular}{llcc}
+$U=\{$ All Movies $\}$                                                   & \multicolumn{1}{c}{}   & Step                                                       & Reason                                              \\ \cline{2-4} 
+\multicolumn{1}{l|}{$S(x)$: x made by Spielberg}                         & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{$\forall x ( S(x) \rightarrow A(x) )$} & \multicolumn{1}{c|}{Hypothesis 1}                   \\ \cline{2-4} 
+\multicolumn{1}{l|}{$L(x)$: x is about Lincoln}                          & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{$\exists x (S(x) \wedge L(x))$}        & \multicolumn{1}{c|}{Hypothesis 2}                   \\ \cline{2-4} 
+\multicolumn{1}{l|}{$A(x)$: x wins awards}                               & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{$S(m) \wedge L(m)$}                    & \multicolumn{1}{c|}{Existential Instantiation (2)}  \\ \cline{2-4} 
+\multicolumn{1}{l|}{Hypothesis 1: $\forall x ( S(x) \rightarrow A(x) )$} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{$L(m)$}                                & \multicolumn{1}{c|}{Simplification (3)}             \\ \cline{2-4} 
+\multicolumn{1}{l|}{Hypothesis 2: $\exists x (S(x) \wedge L(x))$}        & \multicolumn{1}{l|}{5} & \multicolumn{1}{c|}{$S(m)$}                                & \multicolumn{1}{c|}{Simplification (3)}             \\ \cline{2-4} 
+\multicolumn{1}{l|}{Conclusion: $\exists x ( L(x) \wedge A(x) )$}        & \multicolumn{1}{l|}{6} & \multicolumn{1}{c|}{$S(m) \rightarrow A(m)$}               & \multicolumn{1}{c|}{Universal Instantiation (1)}    \\ \cline{2-4} 
+\multicolumn{1}{l|}{}                                                    & \multicolumn{1}{l|}{7} & \multicolumn{1}{c|}{$A(m)$}                                & \multicolumn{1}{c|}{Modus Ponens (5), (6)}          \\ \cline{2-4} 
+\multicolumn{1}{l|}{}                                                    & \multicolumn{1}{l|}{8} & \multicolumn{1}{c|}{$L(m) \wedge A(m)$}                    & \multicolumn{1}{c|}{Conjunction (4), (7)}           \\ \cline{2-4} 
+\multicolumn{1}{l|}{}                                                    & \multicolumn{1}{l|}{9} & \multicolumn{1}{c|}{$\exists x ( L(x) \wedge A(x) )$}      & \multicolumn{1}{c|}{Existential Generalization (8)} \\ \cline{2-4} 
+\end{tabular}
+\end{table}
+\clearpage
+\item Every computer science major takes discrete mathematics. Anyone who takes discrete mathematics 
+         understands logic. Anyone who understands logic can win arguments.
+         Therefore, all computer science majors can win arguments. \\
+         Answer:
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+$U=\{$ All Students $\}$                                                 &                        & Step                                                       & Reason                                              \\ \cline{2-4} 
+\multicolumn{1}{l|}{$C(x)$: x is a CS student}                           & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{$\forall x ( C(x) \rightarrow D(x) )$} & \multicolumn{1}{c|}{Hypothesis 1}                   \\ \cline{2-4} 
+\multicolumn{1}{l|}{$D(x)$: x has taken Discrete Maths}                  & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{$\forall x ( D(x) \rightarrow L(x) )$} & \multicolumn{1}{c|}{Hypothesis 2}                   \\ \cline{2-4} 
+\multicolumn{1}{l|}{$L(x)$: x understands logic}                         & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{$\forall x ( L(x) \rightarrow A(x) )$} & \multicolumn{1}{c|}{Hypothesis 3}                   \\ \cline{2-4} 
+\multicolumn{1}{l|}{$A(x)$: x wins arguments}                            & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{$C(a) \rightarrow D(a)$}               & \multicolumn{1}{c|}{Universal Instantiation (1)}    \\ \cline{2-4} 
+\multicolumn{1}{l|}{Hypothesis 1: $\forall x ( C(x) \rightarrow D(x) )$} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{$D(a) \rightarrow L(a)$}               & \multicolumn{1}{c|}{Universal Instantiation (2)}    \\ \cline{2-4} 
+\multicolumn{1}{l|}{Hypothesis 2: $\forall x ( Dx) \rightarrow L(x) )$}  & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{$L(a) \rightarrow A(a)$}               & \multicolumn{1}{c|}{Universal Instantiation (3)}    \\ \cline{2-4} 
+\multicolumn{1}{l|}{Hypothesis 3: $\forall x ( L(x) \rightarrow A(x) )$} & \multicolumn{1}{c|}{7} & \multicolumn{1}{c|}{$C(a) \rightarrow L(a)$}               & \multicolumn{1}{c|}{Hypothetical Syllogism (4),(5)} \\ \cline{2-4} 
+\multicolumn{1}{l|}{Conclusion: $\forall x ( C(x) \rightarrow A(x) )$}   & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{$C(a) \rightarrow A(a)$}               & \multicolumn{1}{c|}{Hypothetical Syllogism (7),(6)} \\ \cline{2-4} 
+\multicolumn{1}{l|}{}                                                    & \multicolumn{1}{c|}{9} & \multicolumn{1}{c|}{$\forall x ( C(x) \rightarrow A(x) )$} & \multicolumn{1}{c|}{Universal Generalization (8)}   \\ \cline{2-4} 
+\end{tabular}
+\end{table}
+				
+\end{enumerate}
+\clearpage
+\item {\bf [6 Pts]} State whether the following arguments are correct. Explain your answer briefly. 
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|c|c|}
+\cline{2-4}
+Possibility & $p$ & $q$ & $p \rightarrow q$ \\ \cline{2-4} 
+1           & 0   & 0   & T                 \\ \cline{2-4} 
+2           & 0   & 1   & T                 \\ \cline{2-4} 
+3           & 1   & 0   & F                 \\ \cline{2-4} 
+4           & 1   & 1   & T                 \\ \cline{2-4} 
+\end{tabular}
+\end{table}
+\begin{enumerate}
+
+\item Everyone living in Texas believes in gun rights. Andrew believes in gun rights. Therefore, he lives in Texas.\\
+         Answer: $p$ $=$ you live in Texas. $q$ $=$ you believe in gun rights. If Andrew believes in gun rights then according to possibility 2 and 4 in the table above then Andrew may or may not live in Texas, so the argument is false. $q$ implies nothing about $p$.
+
+\item All students at ISU live in dorms. Mary is not an ISU student. Therefore, Mary does not live in a dorm.\\
+         Answer: $p$ $=$ you are an ISU student. $q$ $=$ you live in the dorms. If Mary is not an ISU student then according to possibility 1 and 2 in the table above Mary may or may not live in the dorms, so the argument is false. $\neg p$ implies nothing about $q$.
+
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
+
+

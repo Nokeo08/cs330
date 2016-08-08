@@ -1,0 +1,124 @@
+\documentstyle[12pt]{article}
+\setlength{\oddsidemargin}{12pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\pagestyle{empty}
+\setlength{\parskip}{7pt plus 2pt minus 2pt}
+
+\begin{document}
+
+\begin{center}
+{{\large CS 330 : Discrete Computational Structures}}\\
+Cahlen Brancheau Homework 1
+
+\vspace*{1cm}
+
+{\bf Fall Semester, 2015}\\
+
+{\sc Assignment \#1}\\
+{\bf Due Date:}  Friday, September 4
+\end{center}
+
+\noindent {\bf Suggested Reading:} Rosen Sections 1.1 - 1.3; Lehman et al. Sections 1.1,  3.1 - 3.4
+
+These are the problems that you need to hand in for grading. For more
+practice, you are encouraged to work on the other problems. Always
+explain your answers and show your reasoning.
+
+\begin{enumerate}
+
+\item {\bf [10 Pts]} Let $p$, $q$ and $r$ be the propositions ``It is snowing'', ``It is freezing'' and ``Classes are cancelled'' respectively. Express each of these propositions as an English sentence.
+
+p = It is snowing, q = It is freezing, r = Classes are cancelled
+
+\begin{enumerate}
+\item $p \wedge \neg q$
+\\answer: It is snowing and it is not freezing.
+\item $\neg p \rightarrow \neg q$
+\\answer: If it is not snowing then it is not freezing.
+\item $p \vee q \rightarrow r$ 
+\\answer: If it is snowing or it is freezing then classes are cancelled.
+\item $p \leftrightarrow q$
+\\answer: It is snowing if and only if it is freezing.
+\item $(p \wedge \neg r) \rightarrow \neg q$
+\\answer: If it is snowing and classes are not cancelled then it is not freezing.
+\end{enumerate}
+
+\item {\bf [10 Pts]} Write each of these statements in the form ``if p then q''.
+
+\begin{enumerate}
+\item It is necessary to attend all lectures to get an A in the class.
+\\answer: If you want to get and A then you must attend all lectures.
+\item Ann will get caught whenever she cheats.
+\\answer: If Ann cheats then she will get caught.
+\item You will finish the race unless it gets too hot.
+\\answer: Unless it gets to hot then you will finish the race
+\item Eating candy everyday is a sufficient condition for getting tooth decay.
+\\answer: If I eat candy every day, then my teeth will decay.
+\item I will miss lecture only if I am sick.
+\\answer: If I am sick then I will miss class.\\\\
+\end{enumerate}
+
+\clearpage
+
+\item {\bf [5 Pts]} Show that $(p \vee q) \wedge (\neg p \vee r) \rightarrow (q \vee r)$ is a tautology.
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+$ \neg p$ & $p$ & $q$ & $r$ & $p \vee q$ & $ \neg p \vee r$ & $(p \vee q) \wedge ( \neg p \vee r)$ & $q \vee r$ & $(p \vee q) \wedge ( \neg p \vee r) \rightarrow (q \vee r)$ \\ \hline
+F         & T   & T   & T   & T          & T                & T                                    & T          & T                                                           \\ \hline
+F         & T   & T   & F   & T          & F                & F                                    & T          & T                                                           \\ \hline
+F         & T   & F   & T   & T          & T                & T                                    & T          & T                                                           \\ \hline
+F         & T   & F   & F   & T          & F                & F                                    & F          & T                                                           \\ \hline
+T         & F   & T   & T   & T          & T                & T                                    & T          & T                                                           \\ \hline
+T         & F   & T   & F   & T          & T                & T                                    & T          & T                                                           \\ \hline
+T         & F   & F   & T   & F          & T                & F                                    & T          & T                                                           \\ \hline
+T         & F   & F   & F   & F          & T                & F                                    & F          & T                                                           \\ \hline
+\end{tabular}
+\end{table}
+
+\item {\bf [15 Pts]} On an island, there are three kinds of people, knights, knaves and spies. Knights always tell the truth, knaves always lie and spies can do either. You meet three people, A, B and C, where one is a knight, one is a knave and one is a spy. For the following problems, state all solutions (there may be no unique solution) or state that there are no solutions. Explain your reasoning.
+
+\begin{enumerate}
+\item A says `I am the knight', B says `I am the knave' and C says `I am the spy'.
+\\\\Answer: A: Knight. B: Spy. C: Knave. A, B, and C all make claims about themselves, according to the rules of each role A must me the Knight, B cannot be the Knave so is therefore is the Spy, and C can only be the Knave.\\
+\item A says `I am the knave', B says `A is not a knave' and C says `I am a knight'.
+\\\\Answer: A: Spy. B: Knight. C: Knave. A's statement cannot be true, therefore A is the Spy. B's statement is true, therefore B cannot be the Knave and must be the Knight. C's statement is false, meaning that C is the Knave.\\
+\item A says `C is the spy', B says `I am not the spy' and C says `I am not the spy'.
+\\\\Answer: A: Knave. B: Spy. C: Knight. B and C both claim not to be the Spy, the Knave must lie so cannot be B or C therefore must be A. If A is the Knave then C is not the Spy and must be the Knight. B can only be the Spy.\\
+\end{enumerate}
+
+\clearpage
+
+\item {\bf [10 Pts]} Prove that $(p \rightarrow r) \wedge (q \rightarrow r)$ and $(p \vee q) \rightarrow r$ are logically equivalent by (a) truth tables, and (b) by deduction using the logical equivalences studied in class (don't use this logical equivalence!).
+    
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|l|c|}
+\hline
+$p$ & $q$ & $r$ & $p \rightarrow r$ & $q \rightarrow r$ & $(p \rightarrow r) \wedge (q \rightarrow r)$ & $p \vee q$ & $r$ & $(p \vee q) \rightarrow r$ \\ \hline
+T   & T   & T   & T                 & T                 & T                                            & T          & T   & T                          \\ \hline
+T   & T   & F   & F                 & F                 & F                                            & T          & F   & F                          \\ \hline
+T   & F   & T   & T                 & T                 & T                                            & T          & T   & T                          \\ \hline
+T   & F   & F   & F                 & T                 & F                                            & T          & F   & F                          \\ \hline
+F   & T   & T   & T                 & T                 & T                                            & T          & T   & T                          \\ \hline
+F   & T   & F   & T                 & F                 & F                                            & T          & F   & F                          \\ \hline
+F   & F   & T   & T                 & T                 & T                                            & F          & T   & T                          \\ \hline
+F   & F   & F   & T                 & T                 & T                                            & F          & F   & T                          \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lclc}
+$(p \rightarrow r) \wedge (q \rightarrow r)$ & $\equiv$ & $(p \vee q) \rightarrow r$           &                                             \\
+$(\neg p \vee r) \wedge (\neg q \vee r)$     & $\equiv$ & $\neg (p \vee q) \vee r$        	     & Logical Equivalence Table 6 \\
+$(\neg p \wedge \neg q) \vee r$              	& $\equiv$ & $(\neg p \wedge \neg q) \vee r$ & Distributive and De Morgan                          
+\end{tabular}
+\end{table}
+
+\end{enumerate}
+\end{document}
+
+

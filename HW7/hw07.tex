@@ -1,0 +1,149 @@
+\documentstyle[11pt]{article}
+\setlength{\oddsidemargin}{12pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\pagestyle{empty}
+\setlength{\parskip}{7pt plus 2pt minus 2pt}
+
+\begin{document}
+
+\begin{center}
+{{\large CS 330 : Discrete Computational Structures}}\\
+
+%\vspace*{1cm}
+
+{\bf Fall Semester, 2015}\\
+
+{\sc Assignment \#7}\\
+{\bf Due Date:}  Sunday, Oct 25\\
+Cahlen Brancheau
+\end{center}
+
+\noindent {\bf Suggested Reading:} Rosen Section 5.3; LLM Chapter 6.1 - 6.3
+
+These are the problems that you need to turn in. For more
+practice, you are encouraged to work on the other problems. {\bf Always
+explain your answers and show your reasoning.}
+
+\begin{enumerate}
+
+\item {\bf [12 Pts]} Let $S$ defined recursively by (1) $5 \in S$ and (2) if $s \in S$ and $t \in S$, then $st \in S$. 
+Let $A = \{5^i \mid i \in {\cal Z}^+\}$. Prove that
+
+\begin{enumerate}
+
+\item {\bf [6 Pts]} $A \subseteq S$ by mathematical induction.\\
+\textbf{Answer}:\\
+
+Basis: $5^1 =  5$ and by definition $5 \in S$
+
+Inductive Step:\\
+Assume $5^k \in S$ where $k \in \cal Z$\\
+Prove: $5^{k+1} \in S$\\
+$5^{k+1} = 5^k * 5$, $5^k \in S$ by the IH and $5 \in S$ by step (1) in the recursive definition of $S$. Therefore $5^k * 5 \in S$ by step (2) in the recursive definition of $S$.\\\\
+Quod erat demonstrandum.\\
+
+\item {\bf [6 Pts]} $S \subseteq A$ by structural induction.\\
+\textbf{Answer}:\\
+
+Basis: $5 \in S$ by step (1) in the recursive definition of $S$ and $5 = 5^1 \in A$
+
+Inductive Step:\\
+Let $a,b \in S$, $a * b \in S$ by step (2) in the recursive definition of $S$.\\
+Assume $a,b \in A$\\
+Prove: $a * b \in A$\\
+By the IH $a = 5^x$ and $b = 5^y$ where $x,y \in \cal Z$. $a * b = 5^x * 5^y = 5^{x+y}$. $x + y \in \cal Z$ therefore $a*b \in A$.\\\\
+Quod erat demonstrandum.\\
+
+\end{enumerate}
+
+\clearpage
+
+\item {\bf [12 Pts]} Let $S$ be defined by (1) $(0,0) \in S$, and (2) if $(a,b) \in S$, 
+then $(a,b+5) \in S$, $(a+1,b+4) \in S$ and $(a+2,b+3) \in S$.
+
+\begin{enumerate}
+
+\item {\bf [6 Pts]} Use structural induction to prove that if $(a,b) \in S$ then $5$ divides $a + b$.\\
+\textbf{Answer}:\\
+
+Basis: $(0,0) \in S$ and $5$ divides $0+0=0$\\
+
+Inductive Step:\\
+Assume $(a,b) \in S$ where $5$ divides $a + b$
+$(x,y) \in S$ and let $(a,b) \in S$ where $(a,b)$ is the relation that the recursive definition of $S$ was applied to in order to get to $(x,y)$.\\\\
+It must be the case that $x = a, y = b+5$ or $x = a+1, y = b+4$ or $x = a+2, y = b+3$.\\
+
+\textbf{Case 1}:  $x = a, y = b+5$. $x + y = a + b + 5$. By the IH $5$ divides $a + b$ and $5$ divides $5$.\\
+\textbf{Case 2}:  $x = a+1, y = b+4$. $x + y = a + b + 5$. By the IH $5$ divides $a + b$ and $5$ divides $5$.\\
+\textbf{Case 2}:  $x = a+2, y = b+3$. $x + y = a + b + 5$. By the IH $5$ divides $a + b$ and $5$ divides $5$.\\\\
+Quod erat demonstrandum.\\
+
+\item {\bf [6 Pts]} Disprove the converse of the statement above, {\it i.e.}, show that if $a,b \in \cal N$, and $a+b$ is divisible by 5, it does not follow that $(a,b) \in S$. Modify the recursive definition of $S$ to make the converse true.\\
+\textbf{Answer}:\\
+
+$5$ divides $3+2 = 5$, but $(3,2) \notin S$\\
+
+New Definition of $S$\\
+
+(1) $(0,0) \in S$\\
+(2) if $(a,b) \in S$, then 
+$(a,b+5) \in S$, 
+$(a+1,b+4) \in S$, 
+$(a+2,b+3) \in S$ 
+$(a+3,b+2) \in S$,  
+$(a+4,b+1) \in S$,  
+$(a+5,b) \in S$.\\\\
+Quod erat demonstrandum.\\
+
+\end{enumerate}
+
+\clearpage
+
+\item {\bf [6 Pts]} Give a recursive definition of the set of bit strings that are palindromes.\\
+\textbf{Answer}:\\
+Basis: An empty string is a palindrome and string with a one bit length is a palindrome.\\
+
+Inductive Step:\\
+A strings in the form $pcp$ are palindromes, where $c$ is a bit and $p$ is a palindrome.\\\\
+Quod erat demonstrandum.\\
+
+
+\item {\bf [20 Pts]} 
+
+\begin{enumerate}
+
+\item {\bf [8 Pts]} Give an inductive definition of the set 
+    $L = \{(a,b) \mid a,b \in {\cal Z}, (a-b) \, {\rm mod} \, 3 = 0\}$.
+Let $L'$ be the set obtained by your inductive definition.\\
+\textbf{Answer}:\\
+
+Basis: $(0,0) \in L'$\\
+
+Recursive: if $(x,y) \in L'$ then $(x+1,y+1) \in L'$, $(x-1,y-1) \in L'$, $(x,y+3) \in L'$, $(x,y-3) \in L'$.\\
+
+\item {\bf [6 Pts]}	Prove that $L' \subseteq L$.\\
+\textbf{Answer}:\\
+
+By definition of $L' \subseteq L$ all pairs in $L'$ must be divisible by $3$. In other words for any $(a,b) \in L', a-b = 3k$ where $k \in \cal Z$\\
+With the recursive definition of $L'$ the possible options are thus:\\\\
+
+\textbf{Case 1}: $(a-1, b-1)$, this is the same as $a-b$ therefore still divisible by 3.\\
+\textbf{Case 2}: $(a+1, b+1)$, this is the same as $a-b$ therefore still divisible by 3.\\
+\textbf{Case 3}: $(a, b+3)$, $a - b + 3 = 3k - 3 = 3(k-1)$ therefore still divisible by 3.\\
+\textbf{Case 4}: $(a, b-3)$, $a - b - 3 = 3k + 3 = 3(k+1)$ therefore still divisible by 3.\\
+
+
+\item {\bf [6 Pts]}	Prove that $L \subseteq L'$.\\
+\textbf{Answer}:\\
+		
+All pairs in $L$ must be divisible by $3$. In other words for any $(a,b) \in L, a-b = 3k \rightarrow b = 3k - a$ where $k \in \cal Z$.\\
+Any element in $L$ with be in the form $(a, 3k-a)$. To get to any other pair using the definition of $L'$ we apply the following.\\
+
+(1) $(0,0)$ to $(0, 3k)$. If $k \geq 0$ apply $(x, y+3)$ $k$ times, else apply $(x, y-3)$ $k$ times.\\
+(2) $(0, 3k)$ to $(a, 3k - a)$. If $a \geq 0$ apply $(x+1, b+1)$ $a$ times, else apply $(x-1, y-1)$ $a$ times.
+			
+\end{enumerate}
+
+\end{enumerate}
+\end{document}

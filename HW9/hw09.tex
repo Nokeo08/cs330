@@ -1,0 +1,130 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\setlength{\oddsidemargin}{12pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\pagestyle{empty}
+\setlength{\parskip}{7pt plus 2pt minus 2pt}
+
+\begin{document}
+
+\begin{center}
+{{\large CS 330 : Discrete Computational Structures}}\\
+
+%\vspace*{1cm}
+
+{\bf Fall Semester, 2015}\\
+
+{\sc Assignment \#9}\\
+{\bf Due Date:}  Tuesday, Nov 17\\
+Cahlen Brancheau
+\end{center}
+
+\noindent {\bf Suggested Reading:} Rosen Section 2.5; LLM Chapter 7.1
+
+These are the problems that you need to turn in. For more
+practice, you are encouraged to work on the other problems. {\bf Always
+explain your answers and show your reasoning.}
+
+\begin{enumerate}
+
+\item {\bf [16 Pts]} Show that the following sets are countably 
+  infinite, by defining a bijection between $\cal N$ (or $\cal Z^+$) and that
+  set. You do not need to prove that your function is bijective.
+
+\begin{enumerate}
+
+\item {\bf [8 Pts]} the set of positive integers divisible by 5\\
+\textbf{Answer}:\\
+
+$f$: $Z^+ \rightarrow \cal S$, $f(x) = 5x$, which is a bijection.\\
+
+\textbf{Onto}: Assume $m \in \cal S$, so $m = 5k$ where $k \in \cal Z^+$. $f(k) = 5k = m$. $\square$
+
+\textbf{One-To-One}: Assume $f(m) = f(n)$, where $m, n \in \cal Z^+$, $5m = 5n \rightarrow m = n$. $\square$\\
+
+\item {\bf [8 Pts]} $\{1,2,3\} \times {\cal Z}$
+
+\end{enumerate}
+
+\item {\bf [16 Pts]} Determine whether the following sets are countable or
+  uncountable. Prove your answer.\\
+\textbf{Answer}:\\
+
+
+
+\begin{enumerate}
+
+\item {\bf [8 Pts]} the set of real numbers with decimal representation
+  consisting of all 1's ($1.11$ and $11.111 \ldots$ are such numbers).\\
+\textbf{Answer}:\\
+
+Let $A = $ the set defined above.\\
+
+First restrict the problem to the positive reals because there is a disjoint union of the positive and negative values and there is a bijection between them.\\
+
+Let $S = $ the set of all positive values in $A$.\\\\
+
+$f: \cal N \times \cal N$ $\rightarrow \cal S:$ $(n,m) \rightarrow \sum_{i=1}^{n} 10^i + \sum_{i=1}^{m} \frac{1}{10^i}$\\
+
+$(n,m)$ maps to $n$ $1's$ to the left of the dot and $m$ $1's$ of the right side. $f$ is a bijection, $\cal N \times \cal N$ is countable and $\cal S$ is countable therefore $A$ is also countable.\\\\
+
+\item {\bf [8 Pts]} the set of real numbers with decimal representation
+  consisting of 1's and 9's\\
+\textbf{Answer}:\\ \\
+Let us enumerate the values between $0$ and $1$.\\
+
+$0.\textbf{1}111111191199...$\\
+$0.9\textbf{1}19191199191... $\\
+$0.19\textbf{9}9119199119... $\\
+$0.199\textbf{1}111911911... $\\
+$0.9191\textbf{9}19199111... $\\
+$0.91919\textbf{1}1911199... $\\
+$...$\\
+
+Taking the numbers bolded we get $0.119191$. This could not appear in our list because it would differ by at least one digit. We could not possibly enumerate all of the values between $0$ and $1$, so this set in uncountable. 
+
+\end{enumerate}
+
+
+\item {\bf [9 Pts]} Give an example of two uncountable sets $A$ and $B$ such that $A \cap B$ is (a) finite, (b) countably infinite, (c) uncountably infinite.\\ 
+\textbf{Answer}:\\
+
+1)
+
+Let $A = \{ 1 \leq x \leq 2 | x \in \cal R \}$\\
+Let $B = \{ 2 \leq x \leq 3 | x \in \cal R \}$\\
+
+$A$ and $B$ are uncountable and $A \cap B = 2 \rightarrow$ finite. $\square$ \\
+
+2)
+
+Let $A = \cal Q$ $\cup$ $\cal R^-$\\
+Let $B = \cal Q$ $\cup$ $\cal R^+$\\
+
+$A$ and $B$ are uncountable and $A \cap B = \cal Q \rightarrow$ countably infinite. $\square$ \\
+
+3)
+
+Let $A = \{ 0 \leq x \leq 2 | x \in \cal R \}$\\
+Let $B = \{ 1 \leq x \leq 3 | x \in \cal R \}$\\
+
+$A$ and $B$ are uncountable and $A \cap B = [0,1] \rightarrow$ uncountably infinite. $\square$ \\
+ 
+\clearpage
+ 
+\item {\bf [9 Pts]} Prove that the set of functions from $\cal N$ to $\{0,1\}$ is
+  uncountable, by using a diagonalization argument.\\
+  \textbf{Answer}:\\
+  
+  Assume $\cal N$ $\rightarrow$ $\{0,1\}$ is countable and can be enumerated by $\cal S =$ $\{f_1, f_2,...\}$.\\
+  
+  $f(x) = 0$ if $f_x(x) = 1$, $1$ if $f_x(x) = 0$.\\
+  
+  So $f \neq f_x$ for any value $x$, because $f$ differs from $f_x$ in the $nth$ position. The enumeration of the functions cannot completely list all of the functions. $\square$
+
+\end{enumerate}
+\end{document}
+
+\end{enumerate}
+\end{document}

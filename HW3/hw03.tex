@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+\setlength{\oddsidemargin}{12pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\pagestyle{empty}
+\setlength{\parskip}{7pt plus 2pt minus 2pt}
+
+\usepackage{amssymb}
+
+\begin{document}
+
+\begin{center}
+{{\large CS 330 : Discrete Computational Structures}}\\
+Cahlen Brancheau HW 3
+
+{\bf Fall Semester, 2015}\\
+
+{\sc Assignment \#3}\\
+{\bf Due Date:}  Sunday, September 20
+\end{center}
+
+\noindent {\bf Suggested Reading:} Rosen Sections 1.7 - 1.8, 2.1; Lehman et al. Chapter 1 and 4.1
+
+These are the problems that you need to turn in. For more
+practice, you are encouraged to work on the other problems. Always
+explain your answers and show your reasoning.
+
+\begin{enumerate}
+
+\item {\bf [5 Pts]} Prove that the average of two rational numbers is rational. Use a direct proof.\linebreak \linebreak
+ANSWER: Let $p, q$ be rational numbers and $p = \frac{a}{b}$ and $q = \frac{c}{d}$ and $b,d \neq 0$ and $a,b,c,d$ are all integers.\\
+$\frac{p+q}{2} = (\frac{a}{b} + \frac{c}{d}) \frac{1}{2} = \frac{ad+bc}{2bd}$, $ad, bc, 2bd$ are all integers so the result is rational.
+
+\item {\bf [6 Pts]} Prove that there is an irrational number between any rational number and irrational number.\linebreak \linebreak
+ANSWER: Let $r$ be an irrational number, also let $p$ be a rational number where $p = \frac{a}{b}$ where $a,b$ are integers and $b \neq 0$.\\
+Assume $\frac{a}{b} < r$ therefore $\frac{a}{b} < \frac{\frac{a}{b}}{2} + \frac{r}{2} < r$, $\frac{\frac{a}{b}}{2}$ is rational and $\frac{r}{2}$ is irrational.
+The sum of a rational and and irrational is itself irrational.\\
+Proof: Suppose that $\frac{a}{b} + r$ is rational then $\frac{a}{b} + r = \frac{m}{n}$
+\begin{table}[h]
+\centering
+\begin{tabular}{ccc}
+$\frac{a}{b} + r$ & $=$ & $\frac{m}{n}$        \\
+$r$               & $=$ & $\frac{mb - na}{nb}$ 
+\end{tabular}
+\end{table}\linebreak
+This is a contradiction because by definition an irrational cannot be represented as a ratio or two integers. Therefore the sum must result in an irrational number.
+
+
+\item {\bf [6 Pts]} Prove that the square root of 15 is irrational.\linebreak \linebreak
+ANSWER: Proof by contradiction. Assume that $\sqrt{15}$ is rational.
+$\sqrt{15} = \frac{a}{b}, b \neq 0$ and $a,b$ have no common divisors and $a, b$ are integers.
+\begin{table}[h]
+\centering
+\begin{tabular}{ccc}
+$\sqrt{3}$           & $=$                  & $\frac{a}{b}$        \\
+\multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+$3$                  & $=$                  & $\frac{a^2}{b^2}$    \\
+\multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+$3b^2$               & $=$                  & $a^2$
+\end{tabular}
+\end{table}\\
+So $a^2$ is divisible by 3 and $a$ is divisible by 3 $\leftrightarrow a = 3c$
+\begin{table}[h]
+\centering
+\begin{tabular}{ccc}
+$\sqrt{3}$           & $=$                  & $\frac{a}{b}$        \\
+\multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+$3$                  & $=$                  & $\frac{a^2}{b^2}$    \\
+\multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+$3b^2$               & $=$                  & $a^2$
+\end{tabular}
+\end{table}\\
+So $b^2$ is divisible by 3 and $b$ is divisible by 3.\\
+So $a and b$ have a common divisor which is a contradiction.
+
+
+\item {\bf [6 Pts]} Prove that if you have 25 cookies that you will distribute to 6 children, at least one child will get more than 4 cookies. What proof method did you use?\linebreak \linebreak
+ANSWER: If each child is given 4 cookies, the maximum without going over, then we have distributed $4*6=24$ cookies. This means that one child will necessarily have a 5th cookie. This is a direct proof.
+
+\item {\bf [6 Pts]} Prove or disprove that $p$ is odd if and only if $p^3$ is odd.\linebreak \linebreak
+ANSWER: This must be proved in two separate proofs.\\
+Prove $p$ is odd $\rightarrow$ $p^3$ is odd\\
+If $p = 2k+1$ (where k is some integer) then $p^3 = (2k+1)^3 = 8k^3 + 12k^ + 6k +1 = 2(4k^3 + 6k^2 + 6)+1$ Because $k$ is an integer $4k^3 + 6k^2 + 6$ must also be an integer. Therefore $p^3$ is also odd.\\
+
+Prove $p^3$ is odd $\rightarrow$ $p$ is odd\\
+The contrapositive statement is $p$ is even $\rightarrow$ $p^3$ is even.
+If $p = 2k$ (where k is some integer) then $p^3 = (2k)^3 = 8k^3= 2(4k^3)$ Because $k$ is an integer $4k^3$ must also be an integer. Therefore $p^3$ is also even.\\
+
+Therefore $p$ is odd $\leftrightarrow$ $p^3$ is odd is true.
+
+\item {\bf [6 Pts]} Prove that there exist 1000 consecutive positive numbers that are not perfect squares. Is your proof constructive or non-constructive? Explain.\linebreak \linebreak
+ANSWER: $1000^2$ is a perfect square, $1001^2$ is the next perfect square and the difference between them is $(1001^2)-(1000^2)=2001$. Which means that there is more than 1000 numbers without a perfect square. This proof is constructive because I constructed a concrete example that demonstrates the the numbers between $1001^2$ and $1000^2$ cannot be perfect squares.
+
+\item {\bf [5 Pts]} Prove that if $A$ is a subset of $C$ and $B$ is a subset of $D$, then $A \times B$ is a subset of $C \times D$.\\\\
+ANSWER: Let $x \in A, y \in B$ therefore $(x,y) \in A \times B$. Since $A \subseteq C$ and $B \subseteq D$ then $x \in C, y \in D$ Therefore $(x,y) \in C \times D$. Therefore $A \times B \subseteq C \times D$.
+
+\clearpage
+\item {\bf [4 Pts]} Use set builder notation to describe the following sets:\\
+       (a) $\{6, 14, 22, \ldots\}$ (b) $\{3, 6, 11, 18, \ldots\}$\linebreak \linebreak
+       ANSWER:\\
+(a) $\{6+8p \mid p \in \mathbb{N}\}$ (b) $\{p^2+2 \mid p \in \mathbb{P}\}$
+
+\item {\bf [6 Pts]} Prove that if $A$ and $B$ are non-empty sets where $A \neq B$, then $A \times B \neq B \times A$.\linebreak \linebreak
+       ANSWER: Suppose $A \times B = B \times A$\\
+       Let $x \in A$ and $y \in B$ We then have $(x,y) \in A \times B = B \times A$, By definition of the Cartesian product we have $x \in B, y \in A$, which is to say $A \subseteq B$ and $B \subseteq A$, meaning $A=B$. This contradicts the assumption that $A \neq B$, meaning that if $A$ and $B$ are non-empty sets where $A \neq B$, then $A \times B \neq B \times A$.
+
+\end{enumerate}
+\end{document}
